@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect, request
 from user import User
 app = Flask(__name__)
 
@@ -10,6 +10,23 @@ def index():
 @app.route('/user')
 def user():
     return render_template('user.html', people=User.get_all())
+
+@app.route('/user/new')
+def new():
+    return render_template("index.html")
+
+@app.route('/user/add', methods=['POST'])
+def add():
+    data = {
+        'first_name': request.form['first_name'],
+        'last_name': request.form['last_name'],
+        'email': request.form['email']
+    }
+    User.create_user(data)
+    return redirect('/user')
+
+
+
 
 
 

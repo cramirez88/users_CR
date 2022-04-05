@@ -22,3 +22,10 @@ class User:
             #return one row of data
             people.append(cls(p)) #cls refers to the user class, user is from the single row in for loop
         return people
+
+    @classmethod
+    def create_user(cls, data):
+        query = "INSERT INTO users (first_name, last_name, email) VALUES(%(first_name)s, %(last_name)s, %(email)s);"
+        # Query comes back as an id
+        output = connectToMySQL('users').query_db(query, data)
+        return output
