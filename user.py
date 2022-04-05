@@ -12,12 +12,13 @@ class User:
     # Now we use class methods to query our database
     @classmethod
     def get_all(cls):
-        query = "SELECT * FROM friends;"
+        query = "SELECT * FROM users;"
         # make sure to call the connectToMySQL function with the schema you are targeting.
-        results = connectToMySQL('users').query_db(query)
+        results = connectToMySQL('users').query_db(query) #will return a list of dictionaries
         # Create an empty list to append our instances of friends
-        users = []
+        people = []
         # Iterate over the db results and create instances of friends with cls.
-        for user in results:
-            users.append( cls(user) )
-        return users
+        for p in results: 
+            #return one row of data
+            people.append(cls(p)) #cls refers to the user class, user is from the single row in for loop
+        return people

@@ -17,7 +17,7 @@ class MySQLConnection:
     def query_db(self, query, data=None):
         with self.connection.cursor() as cursor:
             try:
-                query = cursor.mogrify(query, data)
+                query = cursor.mogrify(query, data) #mogrify will return th exact string that would be sent to the database by calling the execute method
                 print("Running Query:", query)
                 cursor.execute(query, data)
                 if query.lower().find("insert") >= 0:
