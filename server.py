@@ -25,6 +25,14 @@ def add():
     User.create_user(data)
     return redirect('/user')
 
+@app.route('/user/<int:id>')
+def show_user(id):
+    data = {
+        'id': id
+    }
+    User.show_user(data)
+    return render_template('show_user.html', user = User.show_user(data))
+
 
 
 

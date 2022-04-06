@@ -29,3 +29,9 @@ class User:
         # Query comes back as an id
         output = connectToMySQL('users').query_db(query, data)
         return output
+
+    @classmethod
+    def show_user(cls, data):
+        query= "SELECT * FROM users WHERE id = %(id)s;"
+        output = connectToMySQL('users').query_db(query, data) #returns a list
+        return cls(output[0])
