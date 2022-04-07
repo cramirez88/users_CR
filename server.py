@@ -52,6 +52,15 @@ def edit():
 
 
 
+@app.route('/user/<int:id>/destroy')
+def destroy(id):
+    data = {
+        'id': id
+    }
+    User.delete_user(data)
+    return redirect('/user')
+    
+
 
 
 

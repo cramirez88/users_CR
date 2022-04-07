@@ -25,7 +25,7 @@
           <td>{{user.last_name}}</td>
           <td>{{user.email}}</td>
           <td>{{user.created_at}}</td>
-          <td><a href="/user/{{user.id}}">Show |</a><a href="/user/update">Edit |</a><a href="">Delete</a></td>
+          <td><a href="/user/{{user.id}}">Show |</a><a href="/user/{{user.id}}/update">Edit |</a><a href="/user/{{user.id}}/destroy">Delete</a></td>
         </tr>
       {%endfor%}
     </tbody>
