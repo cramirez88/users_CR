@@ -33,6 +33,25 @@ def show_user(id):
     User.show_user(data)
     return render_template('show_user.html', user = User.show_user(data))
 
+@app.route('/user/<int:id>/update')
+def view_page(id):
+    data = {
+        'id': id
+    }
+    return render_template('edit.html', user=User.show_user(data))
+
+@app.route('/user/update', methods=["POST"])
+def edit():
+    data = {
+        'first_name': request.form['first_name'],
+        'last_name': request.form['last_name'],
+        'email': request.form['email'],
+    }
+    User.edit_user(data)
+    return redirect('/user')
+
+
+
 
 
 
